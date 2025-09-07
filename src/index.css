@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium SaaS Design System */
+
+@layer base {
+  :root {
+    /* Dark theme with Meta/Instagram colors */
+    --background: 220 45% 5%;
+    --foreground: 210 15% 95%;
+
+    --card: 220 45% 7%;
+    --card-foreground: 210 15% 95%;
+
+    --popover: 220 45% 9%;
+    --popover-foreground: 210 15% 95%;
+
+    /* Meta Facebook Blue primary */
+    --primary: 213 89% 53%;  /* #1877F2 converted to HSL */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 35% 12%;
+    --secondary-foreground: 210 15% 95%;
+
+    --muted: 220 30% 18%;
+    --muted-foreground: 220 15% 55%;
+
+    /* Instagram Pink accent */
+    --accent: 340 70% 63%;  /* #E1306C converted to HSL */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 210 15% 95%;
+
+    --border: 220 30% 15%;
+    --input: 220 30% 15%;
+    --ring: 213 89% 53%;
+
+    --radius: 0.5rem;
+
+    /* Instagram gradient colors as HSL */
+    --instagram-pink: 340 70% 63%;     /* #E1306C */
+    --instagram-purple: 316 48% 52%;   /* #C13584 */
+    --instagram-orange: 17 95% 61%;    /* #F77737 */
+    --instagram-yellow: 37 96% 64%;    /* #FCAF45 */
+    --instagram-blue: 228 67% 56%;     /* #405DE6 */
+
+    /* Meta/Instagram inspired gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(213 89% 53%), hsl(228 67% 56%), hsl(316 48% 52%), hsl(340 70% 63%));
+    --gradient-accent: linear-gradient(45deg, hsl(37 96% 64%), hsl(17 95% 61%), hsl(340 70% 63%), hsl(316 48% 52%), hsl(228 67% 56%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 45% 5%), hsl(220 45% 3%));
+    --gradient-glow: radial-gradient(circle at center, hsl(213 89% 53% / 0.08), transparent 70%);
+    --gradient-instagram: linear-gradient(45deg, hsl(228 67% 56%), hsl(316 48% 52%), hsl(340 70% 63%), hsl(17 95% 61%), hsl(37 96% 64%));
+  }
+
+  .light {
+    /* Clean, modern light theme with Meta/Instagram colors */
+    --background: 0 0% 100%;
+    --foreground: 220 40% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 13%;
+
+    /* Meta Facebook Blue primary for light mode */
+    --primary: 213 89% 53%;  /* #1877F2 converted to HSL */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 40% 13%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Instagram Pink accent for light mode */
+    --accent: 340 70% 63%;  /* #E1306C converted to HSL */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 213 89% 53%;
+
+    /* Light mode Meta/Instagram gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(213 89% 53%), hsl(228 67% 56%), hsl(316 48% 52%), hsl(340 70% 63%));
+    --gradient-accent: linear-gradient(45deg, hsl(37 96% 64%), hsl(17 95% 61%), hsl(340 70% 63%), hsl(316 48% 52%), hsl(228 67% 56%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+    --gradient-glow: radial-gradient(circle at center, hsl(213 89% 53% / 0.05), transparent 70%);
+    --gradient-instagram: linear-gradient(45deg, hsl(228 67% 56%), hsl(316 48% 52%), hsl(340 70% 63%), hsl(17 95% 61%), hsl(37 96% 64%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-bold;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: var(--gradient-instagram);
+    @apply bg-clip-text text-transparent font-black;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px hsl(213 89% 53% / 0.15);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 30px hsl(340 70% 63% / 0.2);
+  }
+
+  .glass-card {
+    @apply bg-card/30 backdrop-blur-md border border-border/40;
+  }
+
+  .hero-gradient {
+    background: var(--gradient-dark);
+    position: relative;
+  }
+
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-glow);
+    pointer-events: none;
+  }
+
+  /* Button hover effects */
+  .btn-hover {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .btn-hover::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .btn-hover:hover::before {
+    transform: translateX(100%);
+  }
+
+  /* Reveal animations */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .reveal-up.active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .reveal-scale.active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Stagger animation */
+  .stagger-delay-1 { transition-delay: 0.1s; }
+  .stagger-delay-2 { transition-delay: 0.2s; }
+  .stagger-delay-3 { transition-delay: 0.3s; }
+  .stagger-delay-4 { transition-delay: 0.4s; }
+
+  /* Number counter animation */
+  @keyframes count-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .counter-animate {
+    animation: count-up 0.5s ease-out forwards;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced Card Hover */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px hsl(var(--primary) / 0.3);
+  }
+
+  /* Smooth section transitions */
+  section {
+    transition: opacity 0.5s ease-out;
+  }
+
+  /* Animated underline for links */
+  .link-hover {
+    position: relative;
+    display: inline-block;
+  }
+
+  .link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+
+  .link-hover:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Card flip animation */
+  .flip-card {
+    perspective: 1000px;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+}
